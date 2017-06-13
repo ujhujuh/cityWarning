@@ -1,0 +1,49 @@
+package com.team.service.impl;
+
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.team.dto.Example;
+import com.team.mapper.ExampleMapper;
+import com.team.service.ExampleService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+/**
+ * Created by fantasy on 17-5-28.
+ */
+
+@Service
+public class ExampleServiceImpl implements ExampleService{
+
+    Logger logger = LoggerFactory.getLogger(ExampleServiceImpl.class);
+
+    @Autowired
+    private ExampleMapper exampleMapper;
+
+    public int insert(Example example) {
+        return exampleMapper.insertSelective(example);
+    }
+
+    public int delete(Integer id) {
+        return exampleMapper.deleteByPrimaryKey(id);
+    }
+
+    public int update(Example example) {
+        return exampleMapper.updateByPrimaryKeySelective(example);
+    }
+
+    public Example findById(Integer id) {
+        return exampleMapper.selectByPrimaryKey(id);
+    }
+
+    public PageInfo getList(int currentPage, int pageSize) {
+        PageHelper.startPage(currentPage, pageSize);
+        List<Example> list = exampleMapper.selectList();
+        PageInfo pageInfo = new PageInfo(list);
+        return pageInfo;
+    }
+}
