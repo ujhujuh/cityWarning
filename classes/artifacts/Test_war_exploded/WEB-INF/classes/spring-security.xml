@@ -1,0 +1,58 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+          http://www.springframework.org/schema/security
+          http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+
+	<!-- <security:http auto-config="true">
+		<security:intercept-url pattern="/**" access="ROLE_USER" />
+	</security:http> -->
+
+	<security:http security="none" pattern="/login.html" />
+	<security:http security="none" pattern="/**/*.css" />
+	<security:http security="none" pattern="/**/*.js" />
+	<security:http security="none" pattern="/**/*.png" />
+	<security:http security="none" pattern="/**/*.jpg" />
+	<security:http security="none" pattern="/**/*.woff" />
+	<security:http security="none" pattern="/**/*.ttf" />
+
+	<security:http auto-config="true">
+		<security:form-login
+			login-page="/login.html"
+			login-processing-url="/login.do"
+			default-target-url="/index.html"
+		 	authentication-failure-url="/login.html?error=true"
+			username-parameter="username"
+			password-parameter="password" />
+			
+		<!-- <security:logout logout-url="/spring_security/logout.do"/> -->
+		<security:logout invalidate-session="true"
+	     	logout-success-url="/login.html"
+	      	logout-url="/logout.do"/>
+		
+		<!-- 添加csrf验证 -->
+		<!-- <security:csrf /> -->
+		
+		 <!-- session管理，invalid-session-url指定使用已经超时的sessionId进行请求需要重定向的页面 -->
+      	<!--<security:session-management invalid-session-url="/session_timeout.jsp"/>-->
+		
+		<security:intercept-url pattern="/**" access="ROLE_USER, ROLE_ADMIN" />
+	</security:http>
+	
+	<security:authentication-manager>
+	 	<security:authentication-provider user-service-ref="myUserDetailsService"/>
+		
+		<!-- 模拟用户 -->
+		<!-- <security:authentication-provider>
+			<security:user-service>
+				<security:user name="user" password="user" authorities="ROLE_USER" />
+				<security:user name="admin" password="admin" authorities="ROLE_USER, ROLE_ADMIN" />
+			</security:user-service>
+		</security:authentication-provider> -->
+	</security:authentication-manager>
+	
+	<bean id="myUserDetailsService" class="com.team.security.MyUserDetailService" />
+
+</beans>
