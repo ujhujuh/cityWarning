@@ -22,6 +22,7 @@
 		<security:form-login
 			login-page="/jsp/login.html"
 			login-processing-url="/login.do"
+			always-use-default-target="true"
 			default-target-url="/jsp/index.html"
 		 	authentication-failure-url="/jsp/login.html?error=true"
 			username-parameter="username"

@@ -18,4 +18,7 @@ public interface CityWarningMapper {
     int updateByPrimaryKey(CityWarning record);
 
     List<CityWarning> selectList();
+
+    List<CityWarning>  getCityList();
+    List<CityWarning>  findCity(String city);
 }

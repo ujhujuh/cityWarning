@@ -46,4 +46,12 @@ public class CityWarningServiceImpl implements CityWarningService{
         PageInfo pageInfo = new PageInfo(list);
         return pageInfo;
     }
+
+    public List<CityWarning> getCityList() {
+        return cityWarningMapper.getCityList();
+    }
+
+    public List<CityWarning> findCity(String city) {
+        return cityWarningMapper.findCity(city);
+    }
 }
