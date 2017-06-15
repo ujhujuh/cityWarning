@@ -1,12 +1,12 @@
 var user = {};
 $.ajax({
     type: 'GET',
-    url: '/frame/user/getMyInfo',
+    url: '/test/user/getMyInfo',
     dataType: 'json',
     success: function(data) {
         user = data;
         console.info(user);
-        user.role = user.type == 1 ? '殡仪代办员' :'管理员';
+        user.role = user.type == 1 ? '普通用户' :'管理员';
     },
     error: function(xhr, error) {
         alert('error')

@@ -10,7 +10,7 @@
 		<security:intercept-url pattern="/**" access="ROLE_USER" />
 	</security:http> -->
 
-	<security:http security="none" pattern="/login.html" />
+	<security:http security="none" pattern="/jsp/login.html" />
 	<security:http security="none" pattern="/**/*.css" />
 	<security:http security="none" pattern="/**/*.js" />
 	<security:http security="none" pattern="/**/*.png" />
@@ -20,16 +20,16 @@
 
 	<security:http auto-config="true">
 		<security:form-login
-			login-page="/login.html"
+			login-page="/jsp/login.html"
 			login-processing-url="/login.do"
-			default-target-url="/index.html"
-		 	authentication-failure-url="/login.html?error=true"
+			default-target-url="/jsp/index.html"
+		 	authentication-failure-url="/jsp/login.html?error=true"
 			username-parameter="username"
 			password-parameter="password" />
 			
 		<!-- <security:logout logout-url="/spring_security/logout.do"/> -->
 		<security:logout invalidate-session="true"
-	     	logout-success-url="/login.html"
+	     	logout-success-url="/jsp/login.html"
 	      	logout-url="/logout.do"/>
 		
 		<!-- 添加csrf验证 -->
