@@ -75,7 +75,7 @@
 <script type="text/javascript">
 
     $(function(){
-        var id = getUrlParam('id');
+//        var id = getUrlParam('id');
         var type = getUrlParam('type');
         // 显示用户信息，不是编辑
         if (type == 'mine') {
@@ -85,6 +85,7 @@
                 loadPage(id);
             }, 200);
         } else {
+            id = user.id;
             loadPage(id);
         }
 
@@ -117,6 +118,7 @@
             focusCleanup:true,
             success:"valid",
             submitHandler:function(form){
+                id = user.id;
                 userModify(id, type);
             }
         });
@@ -125,7 +127,7 @@
     function loadPage(id) {
         handleAjax('user/find?id=' + id).done(function(data) {
             $('#username').html(data.userName);
-            $('#role').html(data.type == 1 ? '殡仪代办员' : '管理员');
+            $('#role').html(data.type == 1 ? '普通人员' : '管理员');
             $('#realname').val(data.realName);
             $("input:radio[name='sex'][value=" + data.gender + "]").prop("checked", "checked");
             $('#tel').val(data.telphone);
