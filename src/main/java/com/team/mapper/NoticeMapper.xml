@@ -6,9 +6,10 @@
     <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="content" jdbcType="VARCHAR" property="content"/>
   </resultMap>
   <sql id="Base_Column_List">
-    id, title, user_id, user_name
+    id, title, user_id, user_name,content
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -22,9 +23,9 @@
   </delete>
   <insert id="insert" parameterType="com.team.dto.Notice">
     insert into notice (id, title, user_id, 
-      user_name)
+      user_name,content)
     values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
-      #{userName,jdbcType=VARCHAR})
+      #{userName,jdbcType=VARCHAR},#{content,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.team.dto.Notice">
     insert into notice
@@ -76,7 +77,8 @@
     update notice
     set title = #{title,jdbcType=VARCHAR},
       user_id = #{userId,jdbcType=INTEGER},
-      user_name = #{userName,jdbcType=VARCHAR}
+      user_name = #{userName,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectList" resultMap="BaseResultMap">
