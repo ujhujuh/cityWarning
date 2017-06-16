@@ -9,6 +9,8 @@ public class Notice {
 
     private String userName;
 
+    private String content;
+
     public Integer getId() {
         return id;
     }
@@ -39,5 +41,13 @@ public class Notice {
 
     public void setUserName(String userName) {
         this.userName = userName == null ? null : userName.trim();
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 }
