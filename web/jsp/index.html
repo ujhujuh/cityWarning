@@ -75,7 +75,7 @@
             <dd>
                 <ul>
                     <li id="userManage" style="display: none;"><a data-href="/test/jsp/user/list.jsp" data-title="用户列表" href="javascript:void(0)">用户列表</a></li>
-                    <li><a data-href="../user/modify.jsp?type=mine" data-title="个人信息管理" href="javascript:void(0)">修改个人信息</a></li>
+                    <li><a data-href="/test/jsp/user/modify.jsp?type=mine" data-title="个人信息管理" href="javascript:void(0)">修改个人信息</a></li>
                     <li><a data-href="/test/jsp/user/change-password.jsp" data-title="修改密码" href="javascript:void(0)">修改密码</a></li>
                 </ul>
             </dd>
@@ -124,6 +124,6 @@
     });
     /*个人信息*/
     function myselfinfo(){
-        layer_show('查看信息','user/userInfo.html','500','400');
+        layer_show('查看信息','user/userInfo.jsp','500','400');
     }
 </script>
