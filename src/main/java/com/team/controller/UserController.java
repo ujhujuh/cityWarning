@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.security.core.context.SecurityContext;
+import javax.servlet.http.HttpSession;
+
+import java.util.List;
 
 /**
  * Created by fantasy on 17-5-28.
@@ -51,7 +55,31 @@ public class UserController {
     @RequestMapping("/list")
     @ResponseBody
     public PageInfo list(@RequestParam("currentPage")int currentPage, @RequestParam("pageSize")int pageSize){
-        return userService.getList(currentPage, pageSize);
+        return userService.getList(currentPage,pageSize);
     }
+
+    @RequestMapping("/getMyInfo")
+    @ResponseBody
+    public User getMyInfo(HttpSession session) {
+        SecurityContext securityContext = (SecurityContext) session.getAttribute("SPRING_SECURITY_CONTEXT");
+//        System.out.println(securityContext);
+        String username = securityContext.getAuthentication().getName();
+        User user = userService.findByUsername(username);
+        user.setPassword(null);
+        return user;
+    }
+
+    @RequestMapping("/isRegister")
+    @ResponseBody
+    public int isRegister(@RequestParam("username") String username) {
+        User user = userService.findByUsername(username);
+        if(user == null) {
+            // 该用户可以添加
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
 
 }
