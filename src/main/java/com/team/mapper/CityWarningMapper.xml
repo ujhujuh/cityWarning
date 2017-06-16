@@ -119,4 +119,11 @@
     <include refid="Base_Column_List" />
     from city_warning
   </select>
+  <select id="getCityList" resultMap="BaseResultMap">
+    select  DISTINCT city  from city_warning
+  </select>
+
+  <select id="findCity" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select  * from city_warning where city = #{city,jdbcType=VARCHAR}
+  </select>
 </mapper>
