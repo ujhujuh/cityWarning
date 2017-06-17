@@ -76,7 +76,7 @@
                     '<td>' + data[i].pm2 + '</td>' +
                     '<td>' + data[i].pm10 + '</td>' +
                     '<td class="td-manage">' +
-//                    '<a title="编辑" href="javascript:;" onclick="edit(' + data[i].id + ')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>' +
+                    '<a title="编辑" href="javascript:;" onclick="edit(' + data[i].id + ')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>' +
                     '<a title="删除" href="javascript:;" onclick="del(' + data[i].id + ')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>' +
                     '</td>' +
                     '</tr>';
@@ -93,7 +93,7 @@
     }
     /*编辑*/
     function edit(id){
-        layer_show('编辑','modify.html?id=' + id, '600', '400');
+        layer_show('编辑','modify.jsp?id=' + id, '600', '400');
     }
 
 

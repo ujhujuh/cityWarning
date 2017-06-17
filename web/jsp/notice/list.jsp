@@ -67,7 +67,7 @@
   }
   /*公告-添加*/
   function add(){
-    layer_show('添加公告', 'add.jsp', '900', '700');
+    layer_show('添加公告', 'add.jsp', '1100', '700');
   }
   /*公告-编辑*/
   function edit(id){
