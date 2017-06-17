@@ -67,14 +67,14 @@
   }
   /*公告-添加*/
   function add(){
-    layer_show('添加公告', 'add.jsp', '1100', '700');
+    layer_show('添加公告', 'add.jsp', '900', '600');
   }
   /*公告-编辑*/
   function edit(id){
-    layer_show('编辑公告', 'edit.jsp?id=' + id, '900', '700');
+    layer_show('编辑公告', 'edit.jsp?id=' + id, '900', '600');
   }
   function view(id) {
-    layer_show('查看', 'view.jsp?id=' + id, '900', '700');
+    layer_show('查看', 'view.jsp?id=' + id, '900', '600');
   }
   /*公告-删除*/
   function del(id){

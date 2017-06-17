@@ -33,7 +33,7 @@
       </div>
     </div>
     <div>
-      <div id="editor" type="text/plain" style="width:1024px;height:500px;"></div>
+      <div id="editor" type="text/plain" style="width:850px;height:300px; margin-top: 20px;"></div>
         </div>
         <div class="row cl">
             <div class="col-xs-8 col-sm-9 col-xs-offset-3 col-sm-offset-3">
@@ -73,7 +73,12 @@
                   contentType: 'application/json',
                   success: function(result) {
                       $("#title").val(result.title);
-                      $("#editor").find('body').html(result.content);
+                      // editor准备好之后才可以使用
+                      ue.addListener("ready", function () {
+                          ue.setContent(result.content);
+                      });
+
+
                   }
               })
           })
@@ -87,7 +92,6 @@
                   title: $('#title').val(),
                   content: UE.getEditor('editor').getContent()
               };
-              console.info(params)
               $.ajax({
                   type: 'post',
                   url: '/test/notice/update',
@@ -102,7 +106,7 @@
                       }
                   },
                   error: function() {
-                      alert('error')
+                      refresh();
                   }
               })
           }

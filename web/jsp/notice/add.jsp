@@ -33,7 +33,7 @@
       </div>
     </div>
     <div>
-      <div id="editor" type="text/plain" style="width:1024px;height:500px;"></div>
+      <div id="editor" type="text/plain" style="width:850px;height:300px; margin-top: 20px;"></div>
         </div>
     <div class="row cl">
       <div class="col-xs-8 col-sm-9 col-xs-offset-3 col-sm-offset-3">
@@ -87,7 +87,7 @@
                 }
             },
             error: function() {
-                alert('error')
+                refresh();
             }
         })
     }
